@@ -39,7 +39,7 @@ public class PlayerParticles extends RosePlugin {
     private static PlayerParticles INSTANCE;
 
     public PlayerParticles() {
-        super(40261, 3531, ConfigurationManager.class, DataManager.class, LocaleManager.class, null);
+        super(-1, 3531, ConfigurationManager.class, DataManager.class, LocaleManager.class, null);
         INSTANCE = this;
     }
 
