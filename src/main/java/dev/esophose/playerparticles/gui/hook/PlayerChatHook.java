@@ -17,11 +17,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.tjdev.util.tjpluginutil.spigot.scheduler.universalscheduler.UniversalRunnable;
+import org.tjdev.util.tjpluginutil.spigot.scheduler.universalscheduler.scheduling.tasks.MyScheduledTask;
 
-public class PlayerChatHook extends BukkitRunnable implements Listener {
+public class PlayerChatHook extends UniversalRunnable implements Listener {
 
     private static Set<PlayerChatHookData> hooks;
-    private static BukkitTask hookTask = null;
+    private static MyScheduledTask hookTask = null;
 
     /**
      * Initializes all the static values for this class

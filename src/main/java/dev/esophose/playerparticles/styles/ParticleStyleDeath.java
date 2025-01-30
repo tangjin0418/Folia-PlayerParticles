@@ -19,6 +19,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.tjdev.util.tjpluginutil.spigot.scheduler.universalscheduler.UniversalRunnable;
 
 public class ParticleStyleDeath extends ConfiguredParticleStyle implements Listener {
 
@@ -83,7 +84,7 @@ public class ParticleStyleDeath extends ConfiguredParticleStyle implements Liste
             return;
 
         Location location = event.getEntity().getLocation().add(0, 1, 0);
-        new BukkitRunnable() {
+        new UniversalRunnable() {
             private int totalDuration = 0;
 
             @Override

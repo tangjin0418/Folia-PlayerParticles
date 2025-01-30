@@ -22,6 +22,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.tjdev.util.tjpluginutil.spigot.scheduler.universalscheduler.UniversalRunnable;
 
 public class ParticleStyleCelebration extends ConfiguredParticleStyle {
 
@@ -120,7 +121,7 @@ public class ParticleStyleCelebration extends ConfiguredParticleStyle {
         final int fuse = this.baseFuseLength + random.nextInt(this.fuseLengthRandomizer);
         ParticleManager particleManager = PlayerParticles.getInstance().getManager(ParticleManager.class);
 
-        new BukkitRunnable() {
+        new UniversalRunnable() {
             private Location location = loc;
             private int fuseLength = fuse;
             private int fuseTimer = 0;
