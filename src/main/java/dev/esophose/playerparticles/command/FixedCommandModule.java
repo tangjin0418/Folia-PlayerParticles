@@ -29,6 +29,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class FixedCommandModule implements CommandModule {
 
@@ -597,7 +598,7 @@ public class FixedCommandModule implements CommandModule {
             return;
         }
 
-        Bukkit.getScheduler().runTask(PlayerParticles.getInstance(), () -> player.teleport(fixedEffect.getLocation()));
+        player.teleportAsync(fixedEffect.getLocation());
         localeManager.sendMessage(pplayer, "fixed-teleport-success", StringPlaceholders.of("id", id));
     }
 

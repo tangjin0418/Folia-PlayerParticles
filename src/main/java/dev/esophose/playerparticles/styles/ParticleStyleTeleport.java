@@ -18,6 +18,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class ParticleStyleTeleport extends ConfiguredParticleStyle implements Listener {
 
@@ -80,7 +81,7 @@ public class ParticleStyleTeleport extends ConfiguredParticleStyle implements Li
         TeleportCause cause = event.getCause();
         if (cause == TeleportCause.UNKNOWN)
             return;
-        
+
         ParticleManager particleManager = PlayerParticles.getInstance().getManager(ParticleManager.class);
 
         Player player = event.getPlayer();
@@ -96,7 +97,7 @@ public class ParticleStyleTeleport extends ConfiguredParticleStyle implements Li
             }
 
             if (this.after) {
-                Bukkit.getScheduler().runTaskLater(PlayerParticles.getInstance(), () -> {
+                FoliaUtil.scheduler.runTaskLater(player, () -> {
                     Location loc2 = player.getLocation();
                     loc2.setY(loc2.getY() + 1);
                     particleManager.displayParticles(pplayer, player.getWorld(), particle, DefaultStyles.TELEPORT.getParticles(particle, loc2), false);

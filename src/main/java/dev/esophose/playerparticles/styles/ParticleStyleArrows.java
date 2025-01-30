@@ -23,6 +23,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class ParticleStyleArrows extends ConfiguredParticleStyle implements Listener {
 
@@ -43,7 +44,7 @@ public class ParticleStyleArrows extends ConfiguredParticleStyle implements List
         this.is114 = NMSUtil.getVersionNumber() >= 14;
 
         // Removes all arrows that are considered dead or too old to be tracked
-        Bukkit.getScheduler().runTaskTimer(PlayerParticles.getInstance(), () -> {
+        FoliaUtil.scheduler.runTaskTimer(() -> {
             this.projectiles.removeIf(launchedProjectile -> {
                 Projectile projectile = launchedProjectile.getProjectile();
                 if (!projectile.isValid())

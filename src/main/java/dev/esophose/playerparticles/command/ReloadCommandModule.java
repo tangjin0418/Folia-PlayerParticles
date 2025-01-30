@@ -10,6 +10,7 @@ import dev.esophose.playerparticles.styles.DefaultStyles;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class ReloadCommandModule implements CommandModule {
 
@@ -19,7 +20,7 @@ public class ReloadCommandModule implements CommandModule {
         LocaleManager localeManager = playerParticles.getManager(LocaleManager.class);
         if (playerParticles.getManager(PermissionManager.class).canReloadPlugin(pplayer.getUnderlyingExecutor())) {
             playerParticles.reload();
-            Bukkit.getScheduler().runTaskLaterAsynchronously(playerParticles, () -> {
+            FoliaUtil.scheduler.runTaskLaterAsynchronously(() -> {
                 ParticleEffect.reloadSettings();
                 DefaultStyles.reloadSettings(playerParticles.getManager(ParticleStyleManager.class));
                 localeManager.sendMessage(pplayer, "reload-success");

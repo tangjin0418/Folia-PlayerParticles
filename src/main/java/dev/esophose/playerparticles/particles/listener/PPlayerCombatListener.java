@@ -17,6 +17,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class PPlayerCombatListener implements Listener {
 
@@ -26,7 +27,7 @@ public class PPlayerCombatListener implements Listener {
     public PPlayerCombatListener() {
         DataManager dataManager = PlayerParticles.getInstance().getManager(DataManager.class);
 
-        Bukkit.getScheduler().runTaskTimer(PlayerParticles.getInstance(), () -> {
+        FoliaUtil.scheduler.runTaskTimer(() -> {
             if (!Setting.TOGGLE_ON_COMBAT.getBoolean())
                 return;
 

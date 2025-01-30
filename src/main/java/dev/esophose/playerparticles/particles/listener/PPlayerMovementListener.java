@@ -14,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.util.Vector;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class PPlayerMovementListener implements Listener {
     
@@ -26,7 +27,7 @@ public class PPlayerMovementListener implements Listener {
         this.timeSinceLastMovement = new HashMap<>();
         this.previousVectors = new HashMap<>();
 
-        Bukkit.getScheduler().runTaskTimer(PlayerParticles.getInstance(), () -> {
+        FoliaUtil.scheduler.runTaskTimer(() -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 UUID playerUUID = player.getUniqueId();
                 Vector previousVector = this.previousVectors.get(playerUUID);

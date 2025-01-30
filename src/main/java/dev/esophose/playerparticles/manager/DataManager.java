@@ -36,6 +36,7 @@ import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 /**
  * All data changes to PPlayers such as group or fixed effect changes must be done through here,
@@ -51,7 +52,7 @@ public class DataManager extends AbstractDataManager {
      * Loads all fixed effects and player particles from the database
      */
     public void loadEffects() {
-        Bukkit.getScheduler().runTaskAsynchronously(this.rosePlugin, () -> {
+        FoliaUtil.scheduler.runTaskAsynchronously(() -> {
             this.loadFixedEffects();
             for (Player player : Bukkit.getOnlinePlayers())
                 this.getPPlayer(player.getUniqueId(), (pplayer) -> { }); // Loads the PPlayer from the database
@@ -574,7 +575,7 @@ public class DataManager extends AbstractDataManager {
      * @param asyncCallback The callback to run on a separate thread
      */
     private void async(Runnable asyncCallback) {
-        Bukkit.getScheduler().runTaskAsynchronously(this.rosePlugin, asyncCallback);
+        FoliaUtil.scheduler.runTaskAsynchronously(asyncCallback);
     }
 
     /**
@@ -583,7 +584,7 @@ public class DataManager extends AbstractDataManager {
      * @param syncCallback The callback to run on the main thread
      */
     private void sync(Runnable syncCallback) {
-        Bukkit.getScheduler().runTask(this.rosePlugin, syncCallback);
+        FoliaUtil.scheduler.runTask(syncCallback);
     }
 
     @Override

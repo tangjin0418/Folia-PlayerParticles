@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 import dev.rosewood.rosegarden.RosePlugin;
 import dev.rosewood.rosegarden.manager.Manager;
 import org.bukkit.Bukkit;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class ParticleStyleManager extends Manager {
 
@@ -44,7 +45,7 @@ public class ParticleStyleManager extends Manager {
         this.eventStyles.clear();
 
         // Run task a tick later to allow other plugins to finish registering to the event
-        Bukkit.getScheduler().runTask(this.rosePlugin, () -> {
+        FoliaUtil.scheduler.runTask(() -> {
             // Call registration event
             // We use this event internally, so no other action needs to be done for us to register the default styles
             ParticleStyleRegistrationEvent event = new ParticleStyleRegistrationEvent();

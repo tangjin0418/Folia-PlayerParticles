@@ -43,6 +43,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.minecart.CommandMinecart;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class CommandManager extends Manager implements CommandExecutor, TabCompleter {
 
@@ -156,7 +157,7 @@ public class CommandManager extends Manager implements CommandExecutor, TabCompl
                 return true;
             }
 
-            Bukkit.getScheduler().runTaskAsynchronously(this.rosePlugin, () -> {
+            FoliaUtil.scheduler.runTaskAsynchronously(() -> {
                 String[] cmdArgs = args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[0];
 
                 if (!commandModule.canConsoleExecute()) {
@@ -218,7 +219,7 @@ public class CommandManager extends Manager implements CommandExecutor, TabCompl
             }
 
             // Run the /ppo command
-            Bukkit.getScheduler().runTask(this.rosePlugin, () -> this.ppoCommand.onCommandExecute(sender, args));
+            this.ppoCommand.onCommandExecute(sender, args);
         }
         
         return true;

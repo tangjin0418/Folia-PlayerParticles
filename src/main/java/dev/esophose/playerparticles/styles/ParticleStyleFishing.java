@@ -19,6 +19,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.projectiles.ProjectileSource;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class ParticleStyleFishing extends ConfiguredParticleStyle implements Listener {
 
@@ -40,7 +41,7 @@ public class ParticleStyleFishing extends ConfiguredParticleStyle implements Lis
         this.projectiles = new HashSet<>();
 
         // Removes all fish hooks that are considered dead
-        Bukkit.getScheduler().runTaskTimer(PlayerParticles.getInstance(), () -> this.projectiles.removeIf(x -> !x.isValid()), 0L, 5L);
+        FoliaUtil.scheduler.runTaskTimer(() -> this.projectiles.removeIf(x -> !x.isValid()), 0L, 5L);
     }
 
     @Override

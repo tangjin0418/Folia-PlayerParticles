@@ -21,6 +21,7 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.plugin.PluginManager;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public class PermissionManager extends Manager {
     
@@ -88,7 +89,7 @@ public class PermissionManager extends Manager {
     public PermissionManager(RosePlugin playerParticles) {
         super(playerParticles);
 
-        Bukkit.getScheduler().runTaskLater(playerParticles, () -> {
+        FoliaUtil.scheduler.runTaskLater(() -> {
             try {
                 // Register plugin permissions to Bukkit
                 PluginManager pluginManager = Bukkit.getPluginManager();

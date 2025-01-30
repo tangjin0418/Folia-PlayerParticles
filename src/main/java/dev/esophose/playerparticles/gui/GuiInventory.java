@@ -17,6 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.tjdev.util.tjpluginutil.spigot.FoliaUtil;
 
 public abstract class GuiInventory {
 
@@ -190,7 +191,7 @@ public abstract class GuiInventory {
     }
 
     public void close() {
-        Bukkit.getScheduler().runTask(PlayerParticles.getInstance(), () -> this.pplayer.getPlayer().closeInventory());
+        FoliaUtil.scheduler.runTask(this.pplayer.getPlayer(), () -> this.pplayer.getPlayer().closeInventory());
     }
 
 }

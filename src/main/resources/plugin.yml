@@ -17,3 +17,4 @@ permissions:
   playerparticles.basecommand:
     description: Allows using the PlayerParticles commands
     default: true
+folia-supported: true
